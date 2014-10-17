@@ -16,15 +16,13 @@ class JoomlaConfig {
 	    self::initJoomla();
 	}
 
-	$params = JComponentHelper::getParams('com_diatem_joomla_3x_getconfig');
+	$params = JComponentHelper::getParams('com_diatem_joomla_2_5x_getconfig');
 	return array($params->get('clepublique') => $params->get('cleprivee'));
     }
 
     private static function initJoomla() {
 
-	if (version_compare(PHP_VERSION, '5.3.1', '<')) {
-	    die('Your host needs to use PHP 5.3.1 or higher to run this version of Joomla!');
-	}
+	
 	define('_JEXEC', 1);
 
 	if (file_exists('../../defines.php')) {
