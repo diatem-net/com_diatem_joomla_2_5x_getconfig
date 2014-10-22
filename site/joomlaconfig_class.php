@@ -39,7 +39,7 @@ class JoomlaConfig {
 
 	jimport('joomla.application.module.helper');
 
-	$app = &JFactory::getApplication('site');
+	$app = JFactory::getApplication('site');
 
 	self::$loaded = true;
     }
@@ -94,7 +94,9 @@ class JoomlaConfig {
 
 	foreach ($results as $r) {
 	    $mInfo = json_decode($r->manifest_cache);
-	    if ($mInfo->author != 'Joomla! Project' 
+	    
+	    
+	    if (is_object($mInfo) && $mInfo->author != 'Joomla! Project' 
 		&& ($r->type == 'module' || $r->type == 'component' || $r->type == 'plugin')
 		&& $r->name != 'plg_editors_codemirror'
 		&& $r->name != 'plg_editors_none'
